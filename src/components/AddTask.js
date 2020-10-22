@@ -1,6 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
+
 
 export const AddTask = () => {
+
+    const [Task, setTask] = useState({
+        Summary: "",
+        Description: "",
+        DueDate: "",
+        Priority: "",
+        CreatedDate: new Date().toJSON().slice(0, 10)
+    })
+
+    const { Summary, Description, DueDate, Priority } = Task
+
+    const handleChange = (e) => {
+        setTask({
+            ...Task,
+            [e.target.id]: e.target.value
+        })
+    }
+
+    const handleSubmit = (e) => {
+        console.log('Task', Task)
+    }
+
     return (
         <div
             className="modal fade"
@@ -37,6 +60,9 @@ export const AddTask = () => {
                                     type="text"
                                     className="form-control"
                                     id="Summary"
+                                    name="Summary"
+                                    value={Summary}
+                                    onChange={handleChange}
                                     aria-describedby="Summary"
                                     placeholder="Summary"
                                 />
@@ -46,6 +72,8 @@ export const AddTask = () => {
                                 <textarea
                                     className="form-control"
                                     id="Description"
+                                    value={Description}
+                                    onChange={handleChange}
                                     aria-describedby="Description"
                                     placeholder="Description"
                                 />
@@ -56,18 +84,19 @@ export const AddTask = () => {
                                     type="date"
                                     className="form-control"
                                     id="DueDate"
+                                    value={DueDate}
+                                    onChange={handleChange}
                                     aria-describedby="DueDate"
                                     placeholder="DueDate"
                                 />
                             </div>
                             <div className="form-group col-6">
-                                <label htmlFor="Priority">DueDate</label>
-                                <select id="Priority" className=" form-control w-100" name="Priority">
-                                    <option disabled selected>Group by : </option>
-                                    <option>High</option>
-                                    <option>Medium</option>
-                                    <option>Low</option>
-                                    <option>None</option>
+                                <label htmlFor="Priority">Priority</label>
+                                <select id="Priority" value={Priority} onChange={handleChange} className=" form-control w-100" name="Priority">
+                                    <option value="High" >High</option>
+                                    <option value="Medium" >Medium</option>
+                                    <option value="Low" >Low</option>
+                                    <option value="None" >None</option>
                                 </select>
                             </div>
                         </div>
@@ -84,7 +113,7 @@ export const AddTask = () => {
                         >
                             Close
                         </button>
-                        <button type="button" className="btn btn-success">
+                        <button type="button" className="btn btn-success" data-dismiss="modal" onClick={handleSubmit}>
                             Save
                         </button>
                     </div>

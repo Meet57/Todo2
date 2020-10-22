@@ -4,16 +4,17 @@ export const SearchBar = () => {
     return (
         <div className="row mt-4">
             <div className="col-2 form-group">
-                <select id="groupSelect" className=" form-control w-100" name="groupSelect">
-                    <option disabled selected>Group by : </option>
-                    <option>None</option>
-                    <option>Created On</option>
-                    <option>Pending On</option>
-                    <option>Priority</option>
+            <label htmlFor="groupSelect">DueDate</label>
+                <select id="groupSelect" defaultValue="None" className=" form-control w-100" name="groupSelect">
+                    <option value="None" >None</option>
+                    <option value="Created On" >Created On</option>
+                    <option value="Pending On" >Pending On</option>
+                    <option value="Priority" >Priority</option>
                 </select>
             </div>
             <div className="col">
-                <input type="text" className="form-control w-100" placeholder="Search" />
+            <label htmlFor="SearchBar">Search</label>
+                <input type="text" id="SearchBar" className="form-control w-100" placeholder="Search" />
             </div>
         </div>
     )
