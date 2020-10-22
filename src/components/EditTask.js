@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { TodoContext } from '../context/TodoContext'
 
 
-export const EditTask = ({task}) => {
+export const EditTask = ({task,tableid}) => {
 
     const { dispatch } = useContext(TodoContext)
 
@@ -27,7 +27,7 @@ export const EditTask = ({task}) => {
     return (
         <div
             className="modal fade"
-            id={"EditTask"+id}
+            id={"EditTask"+id+tableid}
             data-backdrop="static"
             data-keyboard="false"
             tabIndex={-1}

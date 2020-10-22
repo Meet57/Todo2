@@ -21,7 +21,7 @@ export const CompletedTable = () => {
                 {
                     Tasks.map(task => {
                         if (task.isDone) {
-                            return <ListItem task={task} key={task.id} />
+                            return <ListItem task={task} key={task.id} tableid={2} />
                         } else {
                             return null
                         }

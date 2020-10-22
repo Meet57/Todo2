@@ -20,7 +20,7 @@ export const AllTable = () => {
             <tbody>
                 {
                     Tasks.map(task => {
-                        return <ListItem task={task} key={task.id} />
+                        return <ListItem task={task} key={task.id} tableid={1} />
                     })
                 }
             </tbody>

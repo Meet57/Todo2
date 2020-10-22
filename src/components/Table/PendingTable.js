@@ -21,7 +21,7 @@ export const PendingTable = () => {
                 {
                     Tasks.map(task => {
                         if(!task.isDone){
-                            return <ListItem task={task} key={task.id} />
+                            return <ListItem task={task} key={task.id} tableid={3} />
                         }else{
                             return null
                         }

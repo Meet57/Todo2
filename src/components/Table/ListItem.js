@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { TodoContext } from '../../context/TodoContext'
 import { EditTask } from '../EditTask'
 
-export const ListItem = ({ task }) => {
+export const ListItem = ({ task,tableid }) => {
 
     const { id,Summary,isDone, DueDate, Priority, CreatedDate } = task
 
@@ -31,7 +31,7 @@ export const ListItem = ({ task }) => {
                 <td> {DueDate} </td>
                 <td>
                     <button className="btn btn-primary btn-sm p-1 m-1" data-toggle="modal"
-                        data-target={"#EditTask" + id} >
+                        data-target={"#EditTask" + id + tableid} >
                         <span className="material-icons">
                             edit
                         </span>
@@ -46,7 +46,7 @@ export const ListItem = ({ task }) => {
                     </button>
                 </td>
             </tr>
-            <EditTask task={task} />
+            <EditTask task={task} tableid={tableid} />
         </>
     )
 }
