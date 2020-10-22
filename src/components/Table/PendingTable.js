@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { TodoContext } from '../../context/TodoContext'
+import { ListItem } from './ListItem'
 
 export const PendingTable = () => {
+
+    const {Tasks} = useContext(TodoContext)
+
     return (
         <table className="table">
             <thead className="thead-light">
@@ -12,7 +17,17 @@ export const PendingTable = () => {
                     <th scope="col">Action</th>
                 </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+                {
+                    Tasks.map(task => {
+                        if(!task.isDone){
+                            return <ListItem task={task} key={task.id} />
+                        }else{
+                            return null
+                        }
+                    })
+                }
+            </tbody>
         </table>
     )
 }

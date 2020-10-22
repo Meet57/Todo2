@@ -2,21 +2,13 @@ import React, { useContext, useState } from 'react'
 import { TodoContext } from '../context/TodoContext'
 
 
-export const AddTask = () => {
+export const EditTask = ({task}) => {
 
     const { dispatch } = useContext(TodoContext)
 
-    const [Task, setTask] = useState({
-        id: Date.now(),
-        Summary: "",
-        Description: "",
-        DueDate: "",
-        Priority: "",
-        isDone: false,
-        CreatedDate: new Date().toJSON().slice(0, 10)
-    })
+    const [Task, setTask] = useState(task)
 
-    const { Summary, Description, DueDate, Priority } = Task
+    const { id,Summary, Description, DueDate, Priority } = Task
 
     const handleChange = (e) => {
         setTask({
@@ -25,25 +17,17 @@ export const AddTask = () => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = () => {
         dispatch({
-            type: 'ADD_TASK',
+            type: "EDIT_TASK",
             payload: Task
-        })
-        setTask({
-            id: Date.now(),
-            Summary: "",
-            Description: "",
-            DueDate: "",
-            Priority: "",
-            CreatedDate: new Date().toJSON().slice(0, 10)
         })
     }
 
     return (
         <div
             className="modal fade"
-            id="AddTask"
+            id={"EditTask"+id}
             data-backdrop="static"
             data-keyboard="false"
             tabIndex={-1}
@@ -54,7 +38,7 @@ export const AddTask = () => {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="staticBackdropLabel">
-                            Add Task
+                            Edit Task
                         </h5>
                         <button
                             type="button"
