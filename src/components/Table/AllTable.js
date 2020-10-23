@@ -4,7 +4,7 @@ import { ListItem } from './ListItem'
 
 export const AllTable = () => {
 
-    const {Tasks} = useContext(TodoContext)
+    const {Tasks,SearchTasks} = useContext(TodoContext)
 
     return (
         <table className="table">
@@ -19,6 +19,11 @@ export const AllTable = () => {
             </thead>
             <tbody>
                 {
+                    SearchTasks !== null ?
+                    SearchTasks.map(task => {
+                        return <ListItem task={task} key={task.id} tableid={1} />
+                    })
+                    :
                     Tasks.map(task => {
                         return <ListItem task={task} key={task.id} tableid={1} />
                     })

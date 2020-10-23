@@ -4,7 +4,7 @@ import { ListItem } from './ListItem'
 
 export const CompletedTable = () => {
 
-    const {Tasks} = useContext(TodoContext)
+    const {Tasks,SearchTasks} = useContext(TodoContext)
 
     return (
         <table className="table">
@@ -18,13 +18,14 @@ export const CompletedTable = () => {
                 </tr>
             </thead>
             <tbody>
-                {
+            {
+                    SearchTasks !== null ?
+                    SearchTasks.map(task => {
+                        return <ListItem task={task} key={task.id} tableid={2} />
+                    })
+                    :
                     Tasks.map(task => {
-                        if (task.isDone) {
-                            return <ListItem task={task} key={task.id} tableid={2} />
-                        } else {
-                            return null
-                        }
+                        return <ListItem task={task} key={task.id} tableid={2} />
                     })
                 }
             </tbody>

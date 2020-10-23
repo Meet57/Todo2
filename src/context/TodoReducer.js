@@ -20,6 +20,17 @@ export const TodoReducer = (state, { type, payload }) => {
                 ...state,
                 Tasks: state.Tasks.map(task => task.id === payload.id ? payload : task)
             }
+        case 'SEARCH_TASK':
+            const reg = new RegExp(`${payload}`,`gi`)
+            return {
+                ...state,
+                SearchTasks : state.Tasks.filter(task => task.Summary.match(reg))
+            }
+        case 'CLEAR_SEARCH':
+            return {
+                ...state,
+                SearchTasks: null
+            }
         case 'GROUP_BY':
             switch (payload) {
                 case 'id':
@@ -33,8 +44,8 @@ export const TodoReducer = (state, { type, payload }) => {
                         Tasks: state.Tasks.sort(function (a, b) {
                             var x = a.CreatedDate.toLowerCase();
                             var y = b.CreatedDate.toLowerCase();
-                            if (x < y) { return 1; }
-                            if (x > y) { return -1; }
+                            if (x < y) { return -1; }
+                            if (x > y) { return 1; }
                             return 0;
                         }
                         )
@@ -55,10 +66,13 @@ export const TodoReducer = (state, { type, payload }) => {
                     return {
                         ...state,
                         Tasks: state.Tasks.sort(function (a, b) {
-                            var x = a.Priority.toLowerCase();
+                            var x = a.Priority.toLowerCase()
+                            x = x === "high" ? 3 : x === "medium" ? 2 : 1
                             var y = b.Priority.toLowerCase();
-                            if (x < y) { return -1; }
-                            if (x > y) { return 1; }
+                            y = y === "high" ? 3 : y === "medium" ? 2 : 1
+                            console.log(x, y)
+                            if (x < y) { return 1; }
+                            if (x > y) { return -1; }
                             return 0;
                         }
                         )
@@ -66,10 +80,6 @@ export const TodoReducer = (state, { type, payload }) => {
                 default:
                     return { ...state }
             }
-        // return {
-        //     ...state,
-        //     Tasks : state.Tasks.sort((a,b) => a.id - b.id)
-        // }
         default:
             return state
     }

@@ -20,7 +20,7 @@ export const TodoContextProvider = (props) => {
               "Description":"jhsadcbkjasdc",
               "DueDate":"2020-10-24",
               "Priority":"Medium",
-              "CreatedDate":"2020-10-22"
+              "CreatedDate":"2020-09-22"
            },
            {
               "id":1,
@@ -36,16 +36,16 @@ export const TodoContextProvider = (props) => {
               "Summary":"B",
               "Description":"shah",
               "DueDate":"2022-02-12",
-              "Priority":"Medium",
-              "CreatedDate":"2020-10-22"
+              "Priority":"Low",
+              "CreatedDate":"2020-12-22"
            }
         ],
-        groupby:[]
+        "SearchTasks":null
      }
 
     const [state, dispatch] = useReducer(TodoReducer,initialState)
 
-    const { Tasks } = state
+    const { Tasks,SearchTasks } = state
 
     useEffect(() => {
         console.log('Tasks', JSON.stringify(state))
@@ -55,6 +55,7 @@ export const TodoContextProvider = (props) => {
         <TodoContext.Provider
             value={{
                 Tasks,
+                SearchTasks,
                 dispatch
             }}
         >
