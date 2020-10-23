@@ -21,11 +21,19 @@ export const PendingTable = () => {
             {
                     SearchTasks !== null ?
                     SearchTasks.map(task => {
-                        return <ListItem task={task} key={task.id} tableid={3} />
+                        if(!task.isDone){
+                            return <ListItem task={task} key={task.id} tableid={3} />
+                        }else{
+                            return null
+                        }
                     })
                     :
                     Tasks.map(task => {
-                        return <ListItem task={task} key={task.id} tableid={3} />
+                        if(!task.isDone){
+                            return <ListItem task={task} key={task.id} tableid={3} />
+                        }else{
+                            return null
+                        }
                     })
                 }
             </tbody>

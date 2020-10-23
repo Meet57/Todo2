@@ -21,11 +21,19 @@ export const CompletedTable = () => {
             {
                     SearchTasks !== null ?
                     SearchTasks.map(task => {
-                        return <ListItem task={task} key={task.id} tableid={2} />
+                        if(task.isDone){
+                            return <ListItem task={task} key={task.id} tableid={2} />
+                        }else{
+                            return null
+                        }
                     })
                     :
                     Tasks.map(task => {
-                        return <ListItem task={task} key={task.id} tableid={2} />
+                        if(task.isDone){
+                            return <ListItem task={task} key={task.id} tableid={2} />
+                        }else{
+                            return null
+                        }
                     })
                 }
             </tbody>

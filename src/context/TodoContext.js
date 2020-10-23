@@ -16,7 +16,7 @@ export const TodoContextProvider = (props) => {
            {
               "id":3,
               "isDone":false,
-              "Summary":"C",
+              "Summary":"Iti Patel",
               "Description":"jhsadcbkjasdc",
               "DueDate":"2020-10-24",
               "Priority":"Medium",
@@ -24,7 +24,7 @@ export const TodoContextProvider = (props) => {
            },
            {
               "id":1,
-              "Summary":"A",
+              "Summary":"Meet Patel",
               "Description":"patel",
               "DueDate":"0001-01-01",
               "Priority":"High",
@@ -32,12 +32,39 @@ export const TodoContextProvider = (props) => {
               "CreatedDate":"2020-10-22"
            },
            {
+            "id":5,
+            "Summary":"Tithi Patel",
+            "Description":"patel",
+            "DueDate":"0003-01-01",
+            "Priority":"High",
+            "isDone":false,
+            "CreatedDate":"2020-10-22"
+         },
+         {
+            "id":4,
+            "Summary":"Poojan Mehta",
+            "Description":"patel",
+            "DueDate":"0002-01-01",
+            "Priority":"Medium",
+            "isDone":false,
+            "CreatedDate":"2020-10-23"
+         },
+         {
+            "id":6,
+            "Summary":"Anuj Patel",
+            "Description":"patel",
+            "DueDate":"0003-01-01",
+            "Priority":"Low",
+            "isDone":false,
+            "CreatedDate":"2020-10-23"
+         },
+           {
               "id":2,
-              "Summary":"B",
+              "Summary":"Mayur Patel",
               "Description":"shah",
               "DueDate":"2022-02-12",
               "Priority":"Low",
-              "CreatedDate":"2020-12-22"
+              "CreatedDate":"2020-12-23"
            }
         ],
         "SearchTasks":null
