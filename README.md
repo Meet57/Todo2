@@ -1,5 +1,5 @@
 # Todo Application:
-## Live Link : https://lnkd.in/ghkU7Au
+## Live Link : https://todoin.netlify.app/
 
 
 ### Functionality
